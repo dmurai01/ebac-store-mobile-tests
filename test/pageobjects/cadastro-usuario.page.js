@@ -1,22 +1,41 @@
 import { $ } from '@wdio/globals'
 
 class CadastroUsuarioPage {
+    get signUp(){
+        return $('android=new UiSelector().text("Sign up")')
+    }
     get nome(){
+        return $('id:firstName')
+    }
+    get sobrenome(){
+        return $('id:lastName')
+    }
+    get telefone(){
+        return $('id:phone')
+    }
+    get email(){
         return $('id:email')
     }
-    get password(){
-        //return $('id:password')
-        return $('android=new UiSelector().text("Password")')
+    get senha(){
+        return $('id:password')
     }
-    get btnLogin    (){
-        //por accessibility id
-        return $('~Login')
+    get repetirSenha(){
+        return $('id:repassword')
+    }
+    get criar(){
+        return  $('id:create')
     }
 
-    async login(email, password){
+    async cadastrar(nome, sobrenome, telefone, email, senha, repetirSenha){
+        await this.signUp.click()
+        await this.nome.setValue(nome)
+        await this.sobrenome.setValue(sobrenome)
+        await this.telefone.setValue(telefone)
         await this.email.setValue(email)
-        await this.password.setValue(password)
-        await this.btnLogin.click()
+        await this.senha.setValue(senha)
+        await this.repetirSenha.setValue(repetirSenha)
+        await this.criar.click()
+
     }
     
 }
