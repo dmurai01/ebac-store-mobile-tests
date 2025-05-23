@@ -1,0 +1,24 @@
+import { $ } from '@wdio/globals'
+
+class CadastroUsuarioPage {
+    get nome(){
+        return $('id:email')
+    }
+    get password(){
+        //return $('id:password')
+        return $('android=new UiSelector().text("Password")')
+    }
+    get btnLogin    (){
+        //por accessibility id
+        return $('~Login')
+    }
+
+    async login(email, password){
+        await this.email.setValue(email)
+        await this.password.setValue(password)
+        await this.btnLogin.click()
+    }
+    
+}
+
+export default new CadastroUsuarioPage();
