@@ -8,7 +8,7 @@ describe('Cadastro Usuário', () => {
     var email = `teste${Math.floor(Math.random() * 100000000)}`
     it('Deve cadastrar corretamente novo usuário', async () => {
         await homePage.openMenu('profile')
-        await cadastroUsuarioPage.cadastrar(nome, 'Teste', '1199999999', 'email', 'Teste123!', 'Teste123!')
+        await cadastroUsuarioPage.cadastrar(nome, 'Teste', '1199999999', email, 'Teste123!', 'Teste123!')
         expect((await profilePage.profileName(nome)).isDisplayed()).toBeTruthy()
     })
 })
